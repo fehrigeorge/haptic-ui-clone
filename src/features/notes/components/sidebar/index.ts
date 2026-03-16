@@ -5,3 +5,4 @@ export * from "./custom-section";
 export * from "./search-section";
 export * from "./file-tree-section";
 export * from "./sidebar-config-manager";
+export * from "./journal";

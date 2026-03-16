@@ -6,6 +6,7 @@ export type SidebarSectionType =
   | "recents"
   | "file-tree"
   | "tags"
+  | "journal"
   | "custom";
 
 export type SidebarSection = {
@@ -84,12 +85,20 @@ export const DEFAULT_SECTIONS: SidebarSection[] = [
   },
   { id: "search", type: "search", name: "Search", isCollapsed: false, isVisible: true, order: 1 },
   {
+    id: "journal",
+    type: "journal",
+    name: "Journal",
+    isCollapsed: false,
+    isVisible: true,
+    order: 2,
+  },
+  {
     id: "favorites",
     type: "favorites",
     name: "Favorites",
     isCollapsed: false,
     isVisible: true,
-    order: 2,
+    order: 3,
   },
   {
     id: "recents",
@@ -97,7 +106,7 @@ export const DEFAULT_SECTIONS: SidebarSection[] = [
     name: "Recents",
     isCollapsed: false,
     isVisible: true,
-    order: 3,
+    order: 4,
   },
 ];
 

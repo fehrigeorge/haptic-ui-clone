@@ -11,6 +11,7 @@ import {
   CustomSection,
   FileTreeSection,
   SidebarConfigManager,
+  JournalSection,
 } from "./sidebar";
 
 interface SidebarPanelProps {
@@ -215,6 +216,16 @@ export function SidebarPanel({
             onManageSections={openConfigPanel}
             onFileSelect={handleFileSelect}
             onClearRecents={sidebarStore.clearRecents}
+          />
+        );
+
+      case "journal":
+        return (
+          <JournalSection
+            key={section.id}
+            isCollapsed={section.isCollapsed}
+            onToggleCollapse={() => sidebarStore.toggleSectionCollapse(section.id)}
+            onToggleVisibility={() => sidebarStore.toggleSectionVisibility(section.id)}
           />
         );
 
