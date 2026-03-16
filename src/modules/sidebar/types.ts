@@ -4,7 +4,6 @@ export type SidebarSectionType =
   | "search"
   | "favorites"
   | "recents"
-  | "projects"
   | "file-tree"
   | "tags"
   | "journal"
@@ -108,14 +107,6 @@ export const DEFAULT_SECTIONS: SidebarSection[] = [
     isCollapsed: false,
     isVisible: true,
     order: 4,
-  },
-  {
-    id: "projects",
-    type: "projects",
-    name: "Projects",
-    isCollapsed: false,
-    isVisible: true,
-    order: 5,
   },
 ];
 

@@ -114,7 +114,6 @@ export function SidebarConfigManager({
       case 'search': return 'Search';
       case 'favorites': return 'Star';
       case 'recents': return 'Clock';
-      case 'projects': return 'Briefcase';
       case 'file-tree': return 'Files';
       case 'tags': return 'Tag';
       default: return 'Folder';

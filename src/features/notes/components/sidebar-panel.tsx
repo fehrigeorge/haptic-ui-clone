@@ -8,7 +8,6 @@ import { FileText, Folder, PanelTopClose, Search, X } from "lucide-react";
 import {
   FavoritesSection,
   RecentsSection,
-  ProjectsSection,
   CustomSection,
   FileTreeSection,
   SidebarConfigManager,
@@ -217,26 +216,6 @@ export function SidebarPanel({
             onManageSections={openConfigPanel}
             onFileSelect={handleFileSelect}
             onClearRecents={sidebarStore.clearRecents}
-          />
-        );
-
-      case "projects":
-        return (
-          <ProjectsSection
-            key={section.id}
-            projects={sidebarStore.getProjects()}
-            files={files}
-            folders={folders}
-            activeFileId={activeFileId}
-            isCollapsed={section.isCollapsed}
-            onToggleCollapse={() => sidebarStore.toggleSectionCollapse(section.id)}
-            onToggleVisibility={() => sidebarStore.toggleSectionVisibility(section.id)}
-            onManageSections={openConfigPanel}
-            onFileSelect={handleFileSelect}
-            onCreateProject={sidebarStore.createProject}
-            onUpdateProject={sidebarStore.updateProject}
-            onDeleteProject={sidebarStore.deleteProject}
-            onRemoveFromProject={sidebarStore.removeFromProject}
           />
         );
 
@@ -474,13 +453,6 @@ export function SidebarPanel({
         ) : (
           <>
             {fileTreeSection ? renderSection(fileTreeSection) : null}
-            {navigationSections.length > 0 ? (
-              <div className="px-3 pb-2 pt-3">
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground/60">
-                  Navigation
-                </p>
-              </div>
-            ) : null}
             {navigationSections.map(renderSection)}
           </>
         )}
