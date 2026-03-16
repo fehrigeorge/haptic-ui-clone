@@ -4,7 +4,6 @@ import { memo, useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { cn } from "@/shared/lib/utils";
 import { NoteFile, NoteFolder } from "@/types/notes";
 import {
-  Briefcase,
   ChevronRight,
   Folder,
   FolderInput,
@@ -78,17 +77,14 @@ export const FileList = memo(function FileList({
   getFoldersInFolder,
   countDescendants,
 }: FileListProps) {
-  // Sidebar store for favorites, projects, and custom sections
+  // Sidebar store for favorites and custom sections
   const {
     config,
     isFavorite,
     addToFavorites,
     removeFromFavorites,
-    getProjects,
-    addToProject,
     addToCustomSection,
   } = useSidebarStore();
-  const projects = getProjects();
   const customSections = config.sections.filter((section) => section.type === "custom");
   const listRef = useRef<HTMLDivElement>(null);
   const itemButtonRefs = useRef(new Map<string, HTMLButtonElement>());
@@ -713,26 +709,6 @@ export const FileList = memo(function FileList({
                 Add to Favorites
               </ContextMenuItem>
             )}
-            {projects.length > 0 && (
-              <ContextMenuSub>
-                <ContextMenuSubTrigger className="gap-2">
-                  <Briefcase className="w-4 h-4" />
-                  Add to Project
-                </ContextMenuSubTrigger>
-                <ContextMenuSubContent className="w-40">
-                  {projects.map((project) => (
-                    <ContextMenuItem
-                      key={project.id}
-                      onClick={() => addToProject(project.id, folder.id, "folder")}
-                      className="gap-2"
-                    >
-                      <span className={cn("w-2 h-2 rounded-full shrink-0", project.color)} />
-                      {project.name}
-                    </ContextMenuItem>
-                  ))}
-                </ContextMenuSubContent>
-              </ContextMenuSub>
-            )}
             {customSections.length > 0 && (
               <ContextMenuSub>
                 <ContextMenuSubTrigger className="gap-2">
@@ -859,26 +835,6 @@ export const FileList = memo(function FileList({
               <Star className="w-4 h-4" />
               Add to Favorites
             </ContextMenuItem>
-          )}
-          {projects.length > 0 && (
-            <ContextMenuSub>
-              <ContextMenuSubTrigger className="gap-2">
-                <Briefcase className="w-4 h-4" />
-                Add to Project
-              </ContextMenuSubTrigger>
-              <ContextMenuSubContent className="w-40">
-                {projects.map((project) => (
-                  <ContextMenuItem
-                    key={project.id}
-                    onClick={() => addToProject(project.id, file.id, "file")}
-                    className="gap-2"
-                  >
-                    <span className={cn("w-2 h-2 rounded-full shrink-0", project.color)} />
-                    {project.name}
-                  </ContextMenuItem>
-                ))}
-              </ContextMenuSubContent>
-            </ContextMenuSub>
           )}
           {customSections.length > 0 && (
             <ContextMenuSub>
